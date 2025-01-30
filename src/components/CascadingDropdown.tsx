@@ -18,15 +18,15 @@ export interface CascadingDropdownProps {
 
 /**
  * A React functional component that renders a cascading dropdown menu.
- * 
+ *
  * @param {CascadingDropdownProps} props - The properties for the CascadingDropdown component.
  * @param {Record<string, DropdownOption[]>} props.data - An object containing the dropdown options for each level.
  * @param {string[]} props.hierarchy - An array representing the hierarchy of dropdown levels.
  * @param {(selectedValues: Record<string, string>) => void} props.onSelectionChange - A callback function that is called when the selection changes.
  * @param {Record<string, string>} [props.currentSelectedValues] - An optional object containing the current selected values for each level.
- * 
+ *
  * @returns {JSX.Element} The rendered cascading dropdown component.
- * 
+ *
  * @example
  * ```tsx
  * const data = {
@@ -39,6 +39,8 @@ export interface CascadingDropdownProps {
  *   console.log(selectedValues);
  * };
  * 
+ * currentSelectedValues = { country: 'usa', state: 'california', city: 'losangeles' };
+ *
  * <CascadingDropdown data={data} hierarchy={hierarchy} onSelectionChange={handleSelectionChange} />
  * ```
  */
@@ -54,7 +56,7 @@ const CascadingDropdown: React.FC<CascadingDropdownProps> = ({ data, hierarchy, 
         levelsToClear.forEach((key) => delete newSelectedValues[key]);
 
         setSelectedValues(newSelectedValues);
-        onSelectionChange(selectedValues);
+        onSelectionChange(newSelectedValues);
     };
 
     const renderDropdowns = () => {
